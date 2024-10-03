@@ -94,7 +94,7 @@ Nodo* criaArvore(char * entrada){
       pilhaPush(operadores, novoNodo);
     }
 
-    if (c >='a' && c <= 'z'){
+    if ((c >='a' && c <= 'z') || (c >= 'A' && c <= 'Z')){
       novoNodo = criaNodo(c);
       if (operadores->tamanho > 0 && operadores->nodos[operadores->tamanho-1]->conteudo == '!'){
         adicionaFilho(operadores->nodos[operadores->tamanho-1], novoNodo);
