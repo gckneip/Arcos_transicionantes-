@@ -12,6 +12,9 @@ unsigned char *geraTabela(Nodo *arvore, int quantasEntradas, char *entradas) {
         exit(-1);
   }
 
+  // FOR DEBUGGING PURPOSES ONLY: retornar o vetor com antecedência pra fazer um ablubluble no transicoes.c
+  return tabelaVerdade;
+
   for (unsigned long int i = 0; i < tamanhoVetor; i++) {
     tabelaVerdade[i] = percorreArvore(arvore, entradas, quantasEntradas, i);
   }

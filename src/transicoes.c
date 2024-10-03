@@ -18,10 +18,10 @@ void imprimeArcos (unsigned char * tabelaVerdade, char * operandos, int quantosO
 
   for (i = 0; i < (unsigned long int)quantosOperandos; i++) {
     for (j = 0; j < (unsigned long int)(1ULL << tamanhoVetor); j++) {
-      for (k = quantosOperandos-1ULL; k >= 0; k--) {
+      for (k = quantosOperandos - 1; k >= 0; k--) {
         peso = (quantosOperandos - 1ULL) - k;
         if ((unsigned int)k != i) {
-          indiceTabela += ((j & 1ULL << l) >> l) * (1ULL << peso); //faz o l
+          indiceTabela += ((j & 1ULL << l) >> l) * (1ULL << peso); //faz o (UL)l
           arco[k] = '0' + ((j & 1ULL << l) >> l);
           l++;
           continue;
