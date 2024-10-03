@@ -22,7 +22,7 @@ int processaVariaveis(char *entrada, char ** saidaLista) {
   char c;
   Lista *itemAnterior, *novoItem;
   for (i = 0; ((c = entrada[i]) != '\0'); i++) {
-    if (c >= 'a' && c <= 'z') {
+    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
       for (itemAnterior = lista; ((itemAnterior->proximo != NULL) &&
                                   (itemAnterior->proximo->conteudo < c));
            itemAnterior = itemAnterior->proximo);

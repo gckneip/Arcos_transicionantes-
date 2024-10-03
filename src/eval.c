@@ -1,12 +1,18 @@
 #include "eval.h"
 #include "estruturas.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 unsigned char *geraTabela(Nodo *arvore, int quantasEntradas, char *entradas) {
-  unsigned long int tamanhoVetor = 1 << quantasEntradas;
+  unsigned long int tamanhoVetor = 1ULL << quantasEntradas;
   unsigned char *tabelaVerdade = calloc((tamanhoVetor),sizeof(unsigned char)); // inicia o vetor de resultados com 2^n
 
-  for (unsigned int i = 0; i < tamanhoVetor; i++) {
+  if (tabelaVerdade == NULL) {
+        puts("Falha na alocação da tabela verdade.");
+        exit(-1);
+  }
+
+  for (unsigned long int i = 0; i < tamanhoVetor; i++) {
     tabelaVerdade[i] = percorreArvore(arvore, entradas, quantasEntradas, i);
   }
 
@@ -29,7 +35,7 @@ unsigned char procuraZero(Nodo *raiz, char *variaveis, int quantasEntradas, unsi
   int i, j;
   unsigned long int bit;
   for (i = 0; i < raiz->quantosFilhos; i++) {
-    if (raiz->filhos[i]->conteudo >= 'a' && raiz->filhos[i]->conteudo <= 'z') {
+    if ((raiz->filhos[i]->conteudo >= 'a' && raiz->filhos[i]->conteudo <= 'z') || (raiz->filhos[i]->conteudo >= 'A' && raiz->filhos[i]->conteudo <= 'Z')) {
       for (j = 0; j < quantasEntradas; j++) {
         if (variaveis[j] == raiz->filhos[i]->conteudo) {
           bit = quantasEntradas - j - 1;

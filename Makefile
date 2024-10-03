@@ -5,7 +5,7 @@ else
 endif
 
 CC := gcc
-CFLAGS := -Wall -Wextra -std=c11 -Isrc
+CFLAGS := -Wall -Wextra -std=c11 -Isrc -g3
 
 $(ARQUIVO): transicoes.o eval.o parser.o main.o inputproc.o
 	$(CC) $^ -o $@ $(LIBS)
